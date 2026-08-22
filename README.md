@@ -84,7 +84,7 @@ interpersonal-dynamics-analysis/
 ├── SKILL.md                      # 方法论与触发规则
 ├── references/
 │   ├── analysis_checklist.md     # 执行前自检清单
-│   └── report_template.html      # 报告骨架模板（{{占位符}}）
+│   └── report_template.html      # 报告骨架模板（含 {{...}} 占位符，生成报告时填充）
 ├── README.md
 ├── LICENSE
 ├── .gitignore
@@ -93,4 +93,4 @@ interpersonal-dynamics-analysis/
 
 ## 📄 License
 
-[MIT](LICENSE) © 2026 {{GITHUB_USERNAME}}
+[MIT](LICENSE) © 2026 AnnieLiu999
