@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{报告标题}} · 人际动力学分析报告</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#1a1d24; --card2:#21252e; --line:#2c313c;
+    --text:#e6e6e6; --sub:#9aa3b2; --accent:#6ea8fe; --danger:#ff6b6b;
+    --warn:#ffd166; --pos:#4ec9a8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding:32px 16px}
+  .wrap{max-width:960px;margin:0 auto}
+  h1{font-size:26px;margin-bottom:6px}
+  h2{font-size:20px;margin:32px 0 14px;padding-left:10px;border-left:4px solid var(--accent)}
+  h3{font-size:16px;margin:18px 0 8px;color:var(--accent)}
+  p,li{color:var(--text);font-size:14.5px}
+  .sub{color:var(--sub);font-size:13px;margin-bottom:8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--card2);color:var(--accent)}
+  .tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:600}
+  .t-pos{background:rgba(78,201,168,.15);color:var(--pos)}
+  .t-danger{background:rgba(255,107,107,.15);color:var(--danger)}
+  .t-warn{background:rgba(255,209,102,.15);color:var(--warn)}
+  .t-accent{background:rgba(110,168,254,.15);color:var(--accent)}
+  .verdict{font-size:15px;font-weight:700;padding:12px 16px;border-radius:10px;background:var(--card2);border:1px solid var(--line);margin:12px 0}
+  .axis{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .axis div{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:13px}
+  .loop{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:16px 0}
+  .loop .step{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;flex:1 1 200px;font-size:13px}
+  .loop .step b{color:var(--accent)}
+  .loop .arrow{display:flex;align-items:center;color:var(--sub);font-size:20px;flex:0 0 auto}
+  .ref{color:var(--sub);font-size:12px}
+  .note{border-left:3px solid var(--warn);background:rgba(255,209,102,.06);padding:10px 14px;margin:12px 0;border-radius:0 8px 8px 0;font-size:13.5px}
+  .privacy{background:rgba(255,107,107,.1);border:1px solid var(--danger);color:#ffb3b3;border-radius:8px;padding:10px 14px;margin:14px 0;font-size:13px}
+  .timeline{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+  .timeline .node{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;flex:1 1 200px;font-size:13px}
+  .timeline .node b{color:var(--warn)}
+  .timeline .arrow{display:flex;align-items:center;color:var(--sub);font-size:20px;flex:0 0 auto}
+  .redflag{list-style:none}
+  .redflag li{padding:6px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+  .foot{margin-top:30px;color:var(--sub);font-size:12px;text-align:center;border-top:1px solid var(--line);padding-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>{{报告标题}}</h1>
+  <p class="sub">人际动力学分析报告 · 生成日期 {{日期}} · 基于用户提供的对话/场景素材进行模式识别（非临床诊断）</p >
+
+  <!-- 隐私提醒横幅 -->
+  <div class="privacy">⚠️ <b>隐私提醒</b>：本报告含敏感关系分析。分享或留存前，请确认已隐去所有可识别信息（姓名 / 地点 / 机构 / 独特事件）。本 skill 不留存任何用户原始素材。</div>
+
+  <!-- 一、执行摘要 -->
+  <h2>一、执行摘要</h2>
+  <div class="verdict">{{一句话核心结论：双方结构 + 触发点 + 模式识别，非临床}}</div>
+  <div class="card">
+    <h3>对象 A（他）</h3>
+    <p>{{核心画像一句话：边界清晰 + 低共情 + …}}〔证据〕</p>
+    <h3>对象 B（你）</h3>
+    <p>{{核心画像一句话：高主动 + 强公平感 + …}}〔证据〕</p>
+  </div>
+
+  <!-- 二、对象 A 画像 -->
+  <h2>二、对象 A（他）校准后画像</h2>
+  <div class="card">
+    <h3>双轴结构模型</h3>
+    <div class="axis">
+      <div><b>获取轴</b>：{{常态主动 / 低门槛接收}}</div>
+      <div><b>付出轴</b>：{{空头承诺 / 零情绪劳动}}</div>
+      <div><b>自保</b>：{{跨场景稳定底色}}</div>
+    </div>
+    <div class="note">校准记录：{{哪些原判断被用户回答推翻}}</div>
+  </div>
+  <table>
+    <tr><th>维度</th><th>表现</th><th>证据</th></tr>
+    <tr><td>沟通模式</td><td>{{…}}</td><td>{{…}}</td></tr>
+    <tr><td>情感模式</td><td>{{…}}</td><td>{{…}}</td></tr>
+    <tr><td>冲突处理</td><td>{{…}}</td><td>{{…}}</td></tr>
+    <tr><td>自我叙事</td><td>{{…}}</td><td>{{…}}</td></tr>
+  </table>
+
+  <!-- 三、排除性诊断 -->
+  <h2>三、排除性诊断</h2>
+  <table>
+    <tr><th>怀疑项</th><th>判定</th><th>依据</th></tr>
+    <tr><td>NPD</td><td>{{非临床 / 带特质}}</td><td>{{反向排除论证}}</td></tr>
+    <tr><td>煤气灯</td><td>{{排除 / 不成立}}</td><td>{{未否认现实、未让你怀疑自己}}</td></tr>
+    <tr><td>受害者有罪论 / 责任转移</td><td>{{责任转移，非有罪论}}</td><td>{{论证}}</td></tr>
+  </table>
+
+  <!-- 四、对象 B 画像 -->
+  <h2>四、对象 B（你）校准后画像</h2>
+  <div class="card">
+    <h3>双轴结构模型</h3>
+    <div class="axis">
+      <div><b>获取轴</b>：{{常态主动，紧张时被动}}</div>
+      <div><b>付出轴</b>：{{主动 / 高共情}}</div>
+      <div><b>自保</b>：{{跨场景稳定底色}}</div>
+    </div>
+    <div class="note">校准记录：{{哪些原判断被用户回答推翻，如"需求间接"由本色降级为被诱发}}</div>
+  </div>
+  <table>
+    <tr><th>维度</th><th>表现</th><th>证据</th></tr>
+    <tr><td>沟通模式</td><td>{{…}}</td><td>{{…}}</td></tr>
+    <tr><td>情感模式</td><td>{{…}}</td><td>{{…}}</td></tr>
+    <tr><td>冲突处理</td><td>{{…}}</td><td>{{…}}</td></tr>
+    <tr><td>自我叙事</td><td>{{…}}</td><td>{{…}}</td></tr>
+  </table>
+
+  <!-- 五、双向互动模型 -->
+  <h2>五、双向互动模型（核心）</h2>
+  <div class="loop">
+    <div class="step"><b>① 他</b><br>{{冷淡/责任转移（起点）}}</div>
+    <div class="arrow">→</div>
+    <div class="step"><b>② 你</b><br>{{紧张→绕弯/质问/赌气撤退（次级反应）}}</div>
+    <div class="arrow">→</div>
+    <div class="step"><b>③ 他</b><br>{{更读不懂→更冷淡/道德化}}</div>
+    <div class="arrow">→</div>
+    <div class="step"><b>④ 你</b><br>{{没放下+持续反思（内耗）}}</div>
+  </div>
+  <div class="verdict">触发点结论：{{钉死——触发点在谁；用户在安全关系里的对照证明}}</div>
+
+  <!-- 六、心态演变时间线（模块7） -->
+  <h2>六、心态演变轨迹（时间线）</h2>
+  <div class="timeline">
+    <div class="node"><b>{{时间点1}}</b><br>{{事件/外部情境}} → {{该节点心态/行为}}</div>
+    <div class="arrow">→</div>
+    <div class="node"><b>{{时间点2}}</b><br>{{事件/外部情境}} → {{该节点心态/行为}}</div>
+    <div class="arrow">→</div>
+    <div class="node"><b>{{时间点3}}</b><br>{{事件/外部情境}} → {{该节点心态/行为}}</div>
+  </div>
+  <div class="verdict">演变方向：{{逐渐加强 / 有所缓和 / 波动反复}} —— {{依据}}</div>
+  <div class="card">
+    <p><b>外部事件影响</b>：{{时间线上额外事件（换工作/断联/第三方介入等）如何改变心态或行为轨迹}}</p >
+    <p><b>与静态画像互证</b>：{{是同一双轴结构在不同情境下的强度变化，还是出现了新模式}}</p >
+    <p><b>当前阶段</b>：{{处于演变轨迹的哪一环}}</p >
+  </div>
+
+  <!-- 七、红旗清单 -->
+  <h2>七、行为红旗清单（可勾选复核）</h2>
+  <h3>对象 A 红旗</h3>
+  <ul class="redflag">
+    <li>☐ {{可观察行为1}} 〔证据〕</li>
+    <li>☐ {{可观察行为2}} 〔证据〕</li>
+    <li>☐ {{可观察行为3：对私密关系不确权、被问及尴尬不解释}} 〔证据〕</li>
+  </ul>
+  <h3>对象 B 自查</h3>
+  <ul class="redflag">
+    <li>☐ {{如：是否把被理解期待放在低共情者身上}}</li>
+    <li>☐ {{如：赌气撤退后是否真放下}}</li>
+  </ul>
+
+  <!-- 八、操作建议 -->
+  <h2>八、关系操作建议</h2>
+  <div class="card">
+    <p>1. {{针对对象B的可执行动作，如：拆掉错误自我标签}}</p >
+    <p>2. {{把"需求回应"当筛选器}}</p >
+    <p>3. {{给反思设截止点}}</p >
+    <p>4. {{利益边界：不与其捆绑}}</p >
+  </div>
+
+  <!-- 九、类型匹配（模块10） -->
+  <h2>九、类型匹配（荣格八维 / MBTI）</h2>
+  <div class="grid2">
+    <div class="card">
+      <span class="tag t-danger">对象 A（他）</span>
+      <h3>{{推测类型，如 ESTJ / xNTJ 边缘}} · 置信度：{{中}}</h3>
+      <p><b>八维栈</b>：{{Te-Fi / Ni-Fe…}}（推测）</p >
+      <p><b>功能线索</b>：{{S/N、T/F 取向及素材依据}}</p >
+    </div>
+    <div class="card">
+      <span class="tag t-accent">对象 B（你）</span>
+      <h3>{{推测类型，如 INFJ / xNFJ}} · 置信度：{{中}}</h3>
+      <p><b>八维栈</b>：{{Fe-Ti / Ni-Fe…}}（推测）</p >
+      <p><b>功能线索</b>：{{素材依据；并提示"需正式测评确认"}}</p >
+    </div>
+  </div>
+  <div class="card">
+    <h3>类型互动与沟通 gap</h3>
+    <p>{{双方类型如何互补/冲突：如 T 方觉 F 方情绪化、F 方觉 T 方冷漠；或 Ni 跳跃 vs Si/Se 跟不上}}</p >
+    <p class="ref">注：MBTI / 荣格八维为启发式框架，基于有限素材推测，不构成测评结果；类型无优劣。</p >
+  </div>
+
+  <div class="foot">
+    本报告所有判定均基于用户描述与素材的模式识别，<b>非临床诊断</b>。人是会变的，但结构性模式通常稳定。若日后出现相反行为，请回到红旗清单更新判断。
+    <br>🔒 本 skill 不留存任何用户原始对话与隐私；分享前请再次脱敏。
+  </div>
+
+</div>
+</body>
+</html>

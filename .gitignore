@@ -1,0 +1,41 @@
+# ===== macOS / 编辑器 / OS 元数据 =====
+.DS_Store
+.AppleDouble
+._*
+Thumbs.db
+*.swp
+*.swo
+
+# ===== Python 环境 / 缓存 =====
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# ===== Node / 前端依赖 =====
+node_modules/
+
+# ===== 密钥 / 环境变量 / 凭证 =====
+.env
+.env.*
+*.key
+*.pem
+*.p12
+id_rsa
+id_ed25519
+
+# ===== 日志 =====
+*.log
+
+# ===== 本地个人数据与真实案例（避免提交任何真实对话 / 人名 / 场景） =====
+outputs/
+*.local.md
+private/
+cases/
+*.case.*
+
+# ===== IDE =====
+.idea/
+.vscode/
+*.iml
